@@ -48,7 +48,7 @@ key_value=~((temp_key_value>>5)|0xff80);
 	left=(key_value&0x0008)>>3;
 	pleft=left&&(!pleft);
 	
-	pright=left;
+	pright=right;
 	right=(key_value&0x0004)>>2;
 	pright=right&&(!pright);
 	

@@ -20,7 +20,7 @@
 
 #define sampleperiod    20   //unit:ms
 #define lcdrefreshperiod 100 //unit:ms
-u8 mode=2;
+u8 mode=3;
 
 u16 Analogvalue1=0;
 u16 Analogvalue2=0;
@@ -157,6 +157,8 @@ void refresh_mode(void)
 		Show_Str(105,24,WHITE,backcolor,"%",12,1);
 		Show_Str(0,36,RED,backcolor,"VALVE1    :",12,1);
 		Show_Str(0,48,BLUE,backcolor,"VALVE2    :",12,1);
+		value4base=AD_Value[2];
+	  value3base=AD_Value[3];
 	}
 	LCD_DrawLine(0,11,128,11);
 	LCD_DrawLine(0,12,128,12);
@@ -216,9 +218,13 @@ else if(mode==3)
 	else{Show_Str(70,12,BLUE,backcolor,"-",12,1);
 	LCD_ShowNum(85,12,(u16)(-Analogvalue3/10),3,12);}
 	LCD_ShowNum(85,24,Analogvalue1/10,3,12);
-	
-	LCD_ShowNum(85,36,Valve1,3,12);
-	LCD_ShowNum(85,48,Valve2,3,12);
+	if(Valve1){Show_Str(85,36,WHITE,backcolor,"OFF",12,1);}
+	else{Show_Str(85,36,WHITE,backcolor,"ON",12,1);}	
+	if(Valve2)
+	{Show_Str(85,48,WHITE,backcolor,"OFF",12,1);}
+	else{Show_Str(85,48,WHITE,backcolor,"ON",12,1);}
+//	LCD_ShowNum(85,36,Valve1,3,12);
+//	LCD_ShowNum(85,48,Valve2,3,12);
 }
 
 }
@@ -239,72 +245,84 @@ void work(void)
 	u8 count=lcdrefreshperiod/sampleperiod;
 	u8 tempstr[10];
 	display_init();
+
 	while(1)
 	{
 		count=lcdrefreshperiod/sampleperiod;
-	  while(count--)
-	  {
+		
+		if(mode==0||mode==1)
+		{
+			refresh_analog_value();
+			count=lcdrefreshperiod/sampleperiod;
+	    while(count--)
+	    {
 			delay_ms(sampleperiod);
 	    read_key();
 			if(key_value)
-			{
-			if(pup)
-			{trans_analog_value(0);
+			 {
+			 if(pup)
+				{trans_analog_value(0);
 				if(!mode)
-        {printf("A3%d%d",(Analogvalue1/100),(Analogvalue2/10));
-				 sprintf(tempstr,"%s%d%s%d","UP P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
-				 writelastsent(tempstr);
-				}
-				else if(mode==1){
-					if(Analogvalue1>99){printf("C0%d",Analogvalue1);}
-					else{printf("C00%d",Analogvalue1);}
+          {printf("A3%d%d",(Analogvalue1/100),(Analogvalue2/10));
+				  sprintf(tempstr,"%s%d%s%d","UP P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
+				   writelastsent(tempstr);
+				   }
+				else if(mode==1)
+					{
+					if(Analogvalue1>99){printf("C0%d",Analogvalue1);}else{printf("C00%d",Analogvalue1);}
 					sprintf(tempstr,"%s%d%s","UP: ",Analogvalue1,"mm");
 				  writelastsent(tempstr);
-				}
-			}
-			
-			if(pdown)
-			{trans_analog_value(0);
+				  }
+		  	}
+				
+				
+			 if(pdown)
+		  	{trans_analog_value(0);
 				if(!mode)
-        {printf("A4%d%d",(Analogvalue1/100),(Analogvalue2/10));
-				 sprintf(tempstr,"%s%d%s%d","DOWN P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
-				 writelastsent(tempstr);
-				}
-				else if(mode==1){
-				if(Analogvalue1>99){printf("C1%d",Analogvalue1);}
-				else{printf("C10%d",Analogvalue1);}
-			  sprintf(tempstr,"%s%d%s","DOWN: ",Analogvalue1,"mm");
-				writelastsent(tempstr);
-				}
-			}
+					{printf("A4%d%d",(Analogvalue1/100),(Analogvalue2/10));
+				   sprintf(tempstr,"%s%d%s%d","DOWN P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
+				   writelastsent(tempstr);
+					}
+				else if(mode==1)
+					{
+				   if(Analogvalue1>99){printf("C1%d",Analogvalue1);}else{printf("C10%d",Analogvalue1);}
+			     sprintf(tempstr,"%s%d%s","DOWN: ",Analogvalue1,"mm");
+			    	writelastsent(tempstr);
+					}
+			  }
 			
 			
-			if(pright)
-			{trans_analog_value(0);
+			 if(pright)
+			  {trans_analog_value(0);
 				if(!mode)
         {printf("B3%d%d",(Analogvalue1/100),(Analogvalue2/10));
 				 sprintf(tempstr,"%s%d%s%d","RIGHT P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
 				 writelastsent(tempstr);
 				}
-			}
+				else if(mode==1){}
+			 }
 			
-			if(pleft)
-			{trans_analog_value(0);
+			 if(pleft)
+			  {trans_analog_value(0);		
 				if(!mode)
         {printf("B4%d%d",(Analogvalue1/100),(Analogvalue2/10));
 				 sprintf(tempstr,"%s%d%s%d","LEFT P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
 				 writelastsent(tempstr);
 				}
-				
+				else if(mode==1){}
 			}
 			
-			
-			
-			if(kb){printf("A2000C2000");writelastsent("STOP ALL");}
-			if(pa){pa=0;togglemode();printf("A2000C2000");writelastsent("STOP ALL");}
-			}
-			if(mode==2)
+		 	 if(kb){printf("A2000C2000");writelastsent("STOP ALL");}
+			 if(pa){pa=0;togglemode();printf("A2000C2000");writelastsent("STOP ALL");break;}
+		    }
+		  }  
+			refresh_analog_value();
+	  }
+		
+		else if(mode==2)
 			{   
+				
+				  count=lcdrefreshperiod/sampleperiod;
 				  refresh_analog_value();
 				/*
 				  //The part below is for version 1 which can only control Motor A but Motor B
@@ -316,6 +334,17 @@ void work(void)
 					else if(Analogvalue4>-100){printf("A10%d",(u16)(-Analogvalue4));sprintf(tempstr,"%s%d%s","DOWN: ",Analogvalue4," P");writelastsent(tempstr);}
 					else {printf("A1%d",(u16)(-Analogvalue4));sprintf(tempstr,"%s%d%s","DOWN: ",Analogvalue4," P");writelastsent(tempstr);}
 				*/
+				
+				 while(count--)
+				 {
+					 delay_ms(sampleperiod);
+	         read_key();
+	         if(key_value)
+			     {
+			     if(kb){printf("A2000C2000");writelastsent("STOP ALL");}
+			     if(pa){pa=0;togglemode();printf("A2000C2000");writelastsent("STOP ALL");break;}
+			     }
+				 }
 					if(Analogvalue4>99){printf("A0%d",Analogvalue4);}
 					else if(Analogvalue4>9){printf("A00%d",Analogvalue4);}
 					else if(Analogvalue4>0){printf("A000%d",Analogvalue4);}
@@ -331,16 +360,68 @@ void work(void)
 					else if(Analogvalue3>-10){printf("B100%d",(u16)(-Analogvalue3));}
 					else if(Analogvalue3>-100){printf("B10%d",(u16)(-Analogvalue3));}
 					else {printf("B1%d",(u16)(-Analogvalue3));}
-					
-					
-					
 					sprintf(tempstr,"%s%d%s%d","V.:",Analogvalue4,"H.:",Analogvalue3);writelastsent(tempstr);
-					delay_ms(lcdrefreshperiod);
+	        
+			}
+			
+			
+		else if(mode==3)
+			{   
+				count=lcdrefreshperiod/sampleperiod;
+				  refresh_analog_value();
+
+				 while(count--)
+				 {
+					 delay_ms(sampleperiod);
+	         read_key();
+	         if(key_value)
+			     {
+						if(pup)
+						{
+						Valve1=(Valve1+1)%2;
+						printf("D000%d",Valve1);
+						 writelastsent("ToggleValve1");
+						}
+						if(pdown)
+						{
+						Valve2=(Valve2+1)%2;
+						printf("D100%d",Valve2);
+						writelastsent("ToggleValve2");
+						}
+						if(pright)
+						{trans_analog_value(0);
+								if(Analogvalue1/10>9)
+								{printf("C51%d",Analogvalue1/10);}
+								else
+								{printf("C510%d",Analogvalue1/10);}
+								sprintf(tempstr,"%s%d%s","AutoMove: ",(Analogvalue1/10)," R");
+								writelastsent(tempstr);
+						}
+			      if(pleft)
+			      {trans_analog_value(0);
+					      if(Analogvalue1/10>9)
+				        {printf("C50%d",Analogvalue1/10);}
+				      	else
+					     {printf("C500%d",Analogvalue1/10);}
+					     sprintf(tempstr,"%s%d%s","AutoMove: ",(Analogvalue1/10)," L");
+				       writelastsent(tempstr);
+			      }
+			     if(kb){printf("A2000C2000");writelastsent("STOP ALL");}
+			     if(pa){pa=0;togglemode();printf("A2000C2000");writelastsent("STOP ALL");break;}
+			     }
+				 }
+			
+					if(Analogvalue3/10 >9){printf("C41%d",Analogvalue3/10);}
+					else if(Analogvalue3/10>0){printf("C410%d",Analogvalue3/10);}
+					else if(Analogvalue3/10==0){printf("C2000");}
+					else if(Analogvalue3/10>-10){printf("C400%d",(u16)(-Analogvalue3/10));}
+					else if(Analogvalue3/10>-100){printf("C40%d",(u16)(-Analogvalue3/10));}
+					if(Analogvalue3/10){sprintf(tempstr,"%s%d%s","ManualCtr",Analogvalue3/10,"%");writelastsent(tempstr);}
+			
 			}
 	  }
-		refresh_analog_value();
-  } 
-	
-}
+
+ } 
+
 
 

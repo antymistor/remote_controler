@@ -202,7 +202,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\SYSTEM\delay\delay.h)(0x5D316233)
 I (..\SYSTEM\sys\sys.h)(0x5D316240)
-F (..\HARDWARE\KEY\key.c)(0x5D29C66E)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\GUI -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\KEY -I ..\HARDWARE\ACT-I.\RTE\_Target_1-ID:\MyApp\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\MyApp\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
+F (..\HARDWARE\KEY\key.c)(0x5D6A56E1)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\GUI -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\KEY -I ..\HARDWARE\ACT-I.\RTE\_Target_1-ID:\MyApp\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\MyApp\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
 I (..\HARDWARE\KEY\key.h)(0x5D29C66E)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
@@ -234,7 +234,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\SYSTEM\delay\delay.h)(0x5D316233)
 I (..\SYSTEM\sys\sys.h)(0x5D316240)
-F (..\HARDWARE\ACT\act.c)(0x5D67E4F4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\GUI -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\KEY -I ..\HARDWARE\ACT-I.\RTE\_Target_1-ID:\MyApp\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\MyApp\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\act.o --omf_browse ..\obj\act.crf --depend ..\obj\act.d)
+F (..\HARDWARE\ACT\act.c)(0x5D6A5783)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\GUI -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\KEY -I ..\HARDWARE\ACT-I.\RTE\_Target_1-ID:\MyApp\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-ID:\MyApp\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\obj\act.o --omf_browse ..\obj\act.crf --depend ..\obj\act.d)
 I (..\HARDWARE\ACT\act.h)(0x5D29AF5E)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
