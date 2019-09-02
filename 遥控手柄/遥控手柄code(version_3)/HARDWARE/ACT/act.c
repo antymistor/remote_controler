@@ -22,6 +22,7 @@
 #define lcdrefreshperiod 100 //unit:ms
 u8 mode=3;
 
+u8 mode3_flag=0;
 u16 Analogvalue1=0;
 u16 Analogvalue2=0;
 int Analogvalue3=0;
@@ -411,13 +412,25 @@ void work(void)
 			     }
 				 }
 			
+				 if(Analogvalue3/10)
+				 {
 					if(Analogvalue3/10 >9){printf("C41%d",Analogvalue3/10);}
 					else if(Analogvalue3/10>0){printf("C410%d",Analogvalue3/10);}
-					else if(Analogvalue3/10==0){printf("C2000");}
+					//else if(Analogvalue3/10==0){printf("C2000");}
 					else if(Analogvalue3/10>-10){printf("C400%d",(u16)(-Analogvalue3/10));}
 					else if(Analogvalue3/10>-100){printf("C40%d",(u16)(-Analogvalue3/10));}
-					if(Analogvalue3/10){sprintf(tempstr,"%s%d%s","ManualCtr",Analogvalue3/10,"%");writelastsent(tempstr);}
-			
+					sprintf(tempstr,"%s%d%s","ManualCtr",Analogvalue3/10,"%");writelastsent(tempstr);
+					mode3_flag=1;
+				 }
+				 else if( (Analogvalue3/10)==0&&(mode3_flag))
+				 {
+					 mode3_flag=0;
+					 printf("C2000");
+					 writelastsent("STOPPED");
+					 delay_ms(100);
+					 printf("C2000");
+					 //writelastsent("STOPPED");
+				 }
 			}
 	  }
 
