@@ -27,32 +27,7 @@ Project File Date:  07/18/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\MyApp\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling act.c...
-..\HARDWARE\ACT\act.c(268): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  				  sprintf(tempstr,"%s%d%s%d","UP P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
-..\HARDWARE\ACT\act.c(274): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  					sprintf(tempstr,"%s%d%s","UP: ",Analogvalue1,"mm");
-..\HARDWARE\ACT\act.c(284): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  				   sprintf(tempstr,"%s%d%s%d","DOWN P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
-..\HARDWARE\ACT\act.c(290): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  			     sprintf(tempstr,"%s%d%s","DOWN: ",Analogvalue1,"mm");
-..\HARDWARE\ACT\act.c(300): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  				 sprintf(tempstr,"%s%d%s%d","RIGHT P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
-..\HARDWARE\ACT\act.c(310): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  				 sprintf(tempstr,"%s%d%s%d","LEFT P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
-..\HARDWARE\ACT\act.c(364): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  					sprintf(tempstr,"%s%d%s%d","V.:",Analogvalue4,"H.:",Analogvalue3);writelastsent(tempstr);
-..\HARDWARE\ACT\act.c(398): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  								sprintf(tempstr,"%s%d%s","AutoMove: ",(Analogvalue1/10)," R");
-..\HARDWARE\ACT\act.c(407): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  					     sprintf(tempstr,"%s%d%s","AutoMove: ",(Analogvalue1/10)," L");
-..\HARDWARE\ACT\act.c(422): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
-  					sprintf(tempstr,"%s%d%s","ManualCtr",Analogvalue3/10,"%");writelastsent(tempstr);
-..\HARDWARE\ACT\act.c: 10 warnings, 0 errors
-linking...
-Program Size: Code=18122 RO-data=2930 RW-data=140 ZI-data=1668  
-FromELF: creating hex file...
-"..\OBJ\PWM.axf" - 0 Error(s), 10 Warning(s).
+"..\OBJ\PWM.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -66,7 +41,7 @@ Package Vendor: Keil
   D:\MyApp\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

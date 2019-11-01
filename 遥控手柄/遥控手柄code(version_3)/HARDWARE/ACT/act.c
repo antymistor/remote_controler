@@ -78,11 +78,11 @@ void trans_analog_value(u8 sw)
 ////´øÐÞÕý°æ±¾
 	value4temp=AD_Value[2]-value4base;
 	value3temp=AD_Value[3]-value3base;
-	if(value4temp>50){Analogvalue4=value4temp*999.f/(4096-value4base);}
-	else if((value4temp<-50)){Analogvalue4=value4temp*999.f/value4base;}
+	if(value4temp>100){Analogvalue4=value4temp*999.f/(4096-value4base);}
+	else if((value4temp<-100)){Analogvalue4=value4temp*999.f/value4base;}
 	else{Analogvalue4=0;}
-	if(value3temp>50){Analogvalue3=(-value3temp*999.f/(4096-value3base));}
-	else if(value3temp<-50){Analogvalue3=-value3temp*999.f/value3base;}
+	if(value3temp>100){Analogvalue3=(-value3temp*999.f/(4096-value3base));}
+	else if(value3temp<-100){Analogvalue3=-value3temp*999.f/value3base;}
 	else{Analogvalue3=0;}
 	xpointer=Analogvalue3*pointerlen/1000;
 	ypointer=-Analogvalue4*pointerlen/1000;
