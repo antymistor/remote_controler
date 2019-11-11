@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=PB4 Pin=5xkey-1
+Removed Pin From Net: NetName=PB3 Pin=5xkey-2
+Removed Pin From Net: NetName=PB5 Pin=5xkey-4
+Removed Pin From Net: NetName=PB7 Pin=5xkey-6
+Added Pin To Net: NetName=PB3 Pin=5xkey-1
+Added Pin To Net: NetName=PB4 Pin=5xkey-2
+Added Pin To Net: NetName=PB7 Pin=5xkey-4
+Added Pin To Net: NetName=PB5 Pin=5xkey-6
+Added Member To Class: ClassName=yksb Member=Component 5xkey 5*keysignal_output
+Added Member To Class: ClassName=yksb Member=Component P1 PHT-108-01-L-S

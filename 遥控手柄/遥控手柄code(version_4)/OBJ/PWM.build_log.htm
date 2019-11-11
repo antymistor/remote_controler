@@ -1,0 +1,74 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.24.2.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: AI ZQ, ZJU, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.24.1
+Toolchain Path:  D:\MYAPP\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 5 (build 528)
+Assembler:       Armasm.exe V5.06 update 5 (build 528)
+Linker/Locator:  ArmLink.exe V5.06 update 5 (build 528)
+Library Manager: ArmAr.exe V5.06 update 5 (build 528)
+Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
+CPU DLL:         SARMCM3.DLL V5.24.1
+Dialog DLL:      DCM.DLL V1.16.0.0
+Target DLL:      Segger\JL2CM3.dll V2.99.26.0
+Dialog DLL:      TCM.DLL V1.32.0.0
+ 
+<h2>Project:</h2>
+C:\Users\antymistor\Desktop\课题相关\remote_controler\遥控手柄\遥控手柄code(version_4)\USER\PWM.uvprojx
+Project File Date:  09/18/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\MYAPP\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling act.c...
+..\HARDWARE\ACT\act.c(269): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  				  sprintf(tempstr,"%s%d%s%d","UP P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
+..\HARDWARE\ACT\act.c(275): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  					sprintf(tempstr,"%s%d%s","UP: ",Analogvalue1,"mm");
+..\HARDWARE\ACT\act.c(285): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  				   sprintf(tempstr,"%s%d%s%d","DOWN P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
+..\HARDWARE\ACT\act.c(291): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  			     sprintf(tempstr,"%s%d%s","DOWN: ",Analogvalue1,"mm");
+..\HARDWARE\ACT\act.c(301): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  				 sprintf(tempstr,"%s%d%s%d","RIGHT P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
+..\HARDWARE\ACT\act.c(311): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  				 sprintf(tempstr,"%s%d%s%d","LEFT P:",(Analogvalue1/100)*100," T:",(Analogvalue2/10));
+..\HARDWARE\ACT\act.c(365): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  					sprintf(tempstr,"%s%d%s%d","V.:",Analogvalue4,"H.:",Analogvalue3);writelastsent(tempstr);
+..\HARDWARE\ACT\act.c(400): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  								sprintf(tempstr,"%s%d%s","AutoMove: ",(Analogvalue1/10)," R");
+..\HARDWARE\ACT\act.c(409): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  					     sprintf(tempstr,"%s%d%s","AutoMove: ",(Analogvalue1/10)," L");
+..\HARDWARE\ACT\act.c(424): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  					sprintf(tempstr,"%s%d%s","ManualCtr",Analogvalue3/10,"%");writelastsent(tempstr);
+..\HARDWARE\ACT\act.c(443): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+  					sprintf(tempstr,"%s%d%s","VERMOV",Analogvalue4/10,"%");writelastsent(tempstr);
+..\HARDWARE\ACT\act.c: 11 warnings, 0 errors
+linking...
+Program Size: Code=18438 RO-data=2930 RW-data=140 ZI-data=1668  
+FromELF: creating hex file...
+"..\OBJ\PWM.axf" - 0 Error(s), 11 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  D:\MYAPP\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>

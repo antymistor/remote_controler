@@ -1,0 +1,31 @@
+Removed Pin From Net: NetName=GND Pin=5xkey1-1
+Removed Pin From Net: NetName=PB2 Pin=5xkey1-2
+Removed Pin From Net: NetName=PB3 Pin=5xkey1-3
+Removed Pin From Net: NetName=PB4 Pin=5xkey1-4
+Removed Pin From Net: NetName=PB5 Pin=5xkey1-5
+Removed Pin From Net: NetName=PB6 Pin=5xkey1-6
+Removed Pin From Net: NetName=GND Pin=5xkey2-1
+Removed Pin From Net: NetName=PB7 Pin=5xkey2-2
+Removed Pin From Net: NetName=PB8 Pin=5xkey2-3
+Removed Pin From Net: NetName=PB9 Pin=5xkey2-4
+Removed Pin From Net: NetName=PB10 Pin=5xkey2-5
+Removed Pin From Net: NetName=PB11 Pin=5xkey2-6
+Removed Member From Class: ClassName=yksb Member=5xkey1
+Removed Member From Class: ClassName=yksb Member=5xkey2
+Added Component: Designator=5xkey(5xkey)
+Added Component: Designator=5xkey(5xkey)
+Added Pin To Net: NetName=PB3 Pin=5xkey-1
+Added Pin To Net: NetName=PB8 Pin=5xkey-1
+Added Pin To Net: NetName=PB2 Pin=5xkey-2
+Added Pin To Net: NetName=PB7 Pin=5xkey-2
+Added Pin To Net: NetName=GND Pin=5xkey-3
+Added Pin To Net: NetName=GND Pin=5xkey-3
+Added Pin To Net: NetName=PB4 Pin=5xkey-4
+Added Pin To Net: NetName=PB9 Pin=5xkey-4
+Added Pin To Net: NetName=PB5 Pin=5xkey-5
+Added Pin To Net: NetName=PB10 Pin=5xkey-5
+Added Pin To Net: NetName=PB6 Pin=5xkey-6
+Added Pin To Net: NetName=PB11 Pin=5xkey-6
+Added Member To Class: ClassName=yksb Member=Component 5xkey 5*keysignal_output
+Added Member To Class: ClassName=yksb Member=Component 5xkey 5*keysignal_output
+Added Member To Class: ClassName=yksb Member=Component P1 PHT-108-01-L-S

@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=VIN Pin=P1-1
+Removed Pin From Net: NetName=GND Pin=P1-2
+Removed Pin From Net: NetName=PA10 Pin=P1-3
+Removed Pin From Net: NetName=PA9 Pin=P1-4
+Change Component Footprint: Designator=P1 Old Footprint=SMTC-TSW-104-08-X-S New Footprint=SMTC-TSW-105-05-X-S
+Change Component Comment : Designator=P1 Old Comment=TSW-104-08-G-S New Comment=TSW-105-05-T-S
+Added Pin To Net: NetName=GND Pin=P1-1
+Added Pin To Net: NetName=VIN Pin=P1-2
+Added Pin To Net: NetName=PA10 Pin=P1-4
+Added Pin To Net: NetName=PA9 Pin=P1-5
+Added Member To Class: ClassName=yksb Member=Component 5xkey 5*keysignal_output
+Added Member To Class: ClassName=yksb Member=Component P1 PHT-108-01-L-S
+Added Room: Name=yksb

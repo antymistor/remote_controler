@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=DC Pin=IC1-16
+Added Pin To Net: NetName=DC Pin=IC1-27
+Added Pin To Net: NetName=PA6 Pin=IC1-16
+Added Net: Name=PA6
+Added Member To Class: ClassName=yksb Member=Component 5xkey 5*keysignal_output
+Added Member To Class: ClassName=yksb Member=Component P1 PHT-108-01-L-S

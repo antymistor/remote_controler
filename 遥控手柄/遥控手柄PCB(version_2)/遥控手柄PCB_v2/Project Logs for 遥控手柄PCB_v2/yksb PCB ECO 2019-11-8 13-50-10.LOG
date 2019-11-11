@@ -1,0 +1,37 @@
+Removed Pin From Net: NetName=VIN Pin=P1-1
+Removed Pin From Net: NetName=PA10 Pin=P1-3
+Removed Pin From Net: NetName=PA9 Pin=P1-4
+Removed Pin From Net: NetName=3.3V Pin=P2-1
+Removed Pin From Net: NetName=PA13 Pin=P2-2
+Removed Pin From Net: NetName=PA14 Pin=P2-3
+Removed Pin From Net: NetName=GND Pin=P2-4
+Removed Pin From Net: NetName=BLK Pin=TFT1-1
+Removed Pin From Net: NetName=PA6 Pin=TFT1-2
+Removed Pin From Net: NetName=NRST Pin=TFT1-3
+Removed Pin From Net: NetName=CS Pin=TFT1-4
+Removed Pin From Net: NetName=PB13 Pin=TFT1-5
+Removed Pin From Net: NetName=DI Pin=TFT1-6
+Removed Pin From Net: NetName=GND Pin=TFT1-7
+Removed Pin From Net: NetName=3.3V Pin=TFT1-8
+Removed Member From Class: ClassName=yksb Member=TFT1
+Change Component Footprint: Designator=P2 Old Footprint=HDR1X4 New Footprint=SMTC-TSW-104-08-X-S
+Change Component Footprint: Designator=P1 Old Footprint=SMTC-TW-04-01-X-S-120-103 New Footprint=SMTC-PHT-108-01-X-S
+Change Component Comment : Designator=P2 Old Comment=SWD New Comment=TSW-104-08-G-S
+Change Component Comment : Designator=P1 Old Comment=TW-04-01-L-S-120-103 New Comment=PHT-108-01-L-S
+Added Component: Designator=P1(SMTC-TSW-104-08-X-S)
+Added Pin To Net: NetName=3.3V Pin=P1-1
+Added Pin To Net: NetName=VIN Pin=P1-1
+Added Pin To Net: NetName=GND Pin=P1-2
+Added Pin To Net: NetName=DI Pin=P1-3
+Added Pin To Net: NetName=PA10 Pin=P1-3
+Added Pin To Net: NetName=PA9 Pin=P1-4
+Added Pin To Net: NetName=PB13 Pin=P1-4
+Added Pin To Net: NetName=CS Pin=P1-5
+Added Pin To Net: NetName=NRST Pin=P1-6
+Added Pin To Net: NetName=PA6 Pin=P1-7
+Added Pin To Net: NetName=BLK Pin=P1-8
+Added Pin To Net: NetName=GND Pin=P2-1
+Added Pin To Net: NetName=PA14 Pin=P2-2
+Added Pin To Net: NetName=PA13 Pin=P2-3
+Added Pin To Net: NetName=3.3V Pin=P2-4
+Added Member To Class: ClassName=yksb Member=Component P1 PHT-108-01-L-S

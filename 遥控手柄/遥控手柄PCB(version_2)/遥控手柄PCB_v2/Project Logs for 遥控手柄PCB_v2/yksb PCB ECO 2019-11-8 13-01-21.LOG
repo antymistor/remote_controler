@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=PA9 Pin=P1-1
+Removed Pin From Net: NetName=PA10 Pin=P1-2
+Removed Pin From Net: NetName=GND Pin=P1-3
+Removed Pin From Net: NetName=VIN Pin=P1-4
+Change Component Footprint: Designator=P1 Old Footprint=HDR1X4 New Footprint=SMTC-TW-04-01-X-S-120-103
+Change Component Comment : Designator=P1 Old Comment=UART1 New Comment=TW-04-01-L-S-120-103
+Added Pin To Net: NetName=VIN Pin=P1-1
+Added Pin To Net: NetName=GND Pin=P1-2
+Added Pin To Net: NetName=PA10 Pin=P1-3
+Added Pin To Net: NetName=PA9 Pin=P1-4
