@@ -5,11 +5,7 @@
 #include "stm32f10x_adc.h"
 #include "stm32f10x_tim.h"
 
-u16 X_value;
-u16 Y_value;
-u16 A1_value;
-u16 A2_value;
-u16 AD_Value[4];
+u16 AD_Value[6];
 void  Adc_Init(void)
 { 	
 	ADC_InitTypeDef ADC_InitStructure; 
@@ -17,7 +13,7 @@ void  Adc_Init(void)
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |RCC_APB2Periph_ADC1	, ENABLE );	 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	RCC_ADCCLKConfig(RCC_PCLK2_Div6);   
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		
 	GPIO_Init(GPIOA, &GPIO_InitStructure);	
 	
@@ -27,14 +23,15 @@ void  Adc_Init(void)
 	ADC_InitStructure.ADC_ContinuousConvMode =ENABLE;	
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-	ADC_InitStructure.ADC_NbrOfChannel = 4;	
+	ADC_InitStructure.ADC_NbrOfChannel = 6;	
 	ADC_Init(ADC1, &ADC_InitStructure);	 
 
   ADC_RegularChannelConfig(ADC1, 	ADC_Channel_0, 1, ADC_SampleTime_239Cycles5 );
 	ADC_RegularChannelConfig(ADC1, 	ADC_Channel_1, 2, ADC_SampleTime_239Cycles5 );	
   ADC_RegularChannelConfig(ADC1, 	ADC_Channel_2, 3, ADC_SampleTime_239Cycles5 );
 	ADC_RegularChannelConfig(ADC1, 	ADC_Channel_3, 4, ADC_SampleTime_239Cycles5 );	
-
+  ADC_RegularChannelConfig(ADC1, 	ADC_Channel_4, 5, ADC_SampleTime_239Cycles5 );
+	ADC_RegularChannelConfig(ADC1, 	ADC_Channel_5, 6, ADC_SampleTime_239Cycles5 );	
   ADC_DMACmd(ADC1,ENABLE);
 	
 	ADC_Cmd(ADC1, ENABLE);
@@ -54,7 +51,7 @@ DMA_DeInit( DMA1_Channel1 );
 DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&ADC1->DR; 
 DMA_InitStructure.DMA_MemoryBaseAddr = (u32)&AD_Value;  
 DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
-DMA_InitStructure.DMA_BufferSize = 4; 
+DMA_InitStructure.DMA_BufferSize = 6; 
 DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable; 
 DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;  
 DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord; 
@@ -85,13 +82,6 @@ void Analog_Sample_Switch(u8 sw)
 	}
 }
 
-void Get_Analog_Value(void)   
-{
-	A1_value=AD_Value[0];
-	A2_value=AD_Value[1];
-	X_value=AD_Value[2];
-	Y_value=AD_Value[3];
-}
 
 
 

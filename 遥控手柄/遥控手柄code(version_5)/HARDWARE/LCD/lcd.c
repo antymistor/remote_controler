@@ -28,8 +28,6 @@ void  SPIv_WriteData(u8 Data)
       LCD_SCL_CLR;       
       LCD_SCL_SET;
       Data<<=1; 
-
-		
 	}
 }
 

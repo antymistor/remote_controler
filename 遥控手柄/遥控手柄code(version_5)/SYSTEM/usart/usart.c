@@ -2,6 +2,8 @@
 #include "usart.h"	  
 
 #include "act.h"
+#include "lcd.h"
+#include "gui.h"
 #if 1
 #pragma import(__use_no_semihosting)             
 //标准库需要的支持函数         
@@ -13,7 +15,7 @@ u8 cnum=0;
 u8 dectr[6]={0};
 
 u8 tempstr2[15];
-int speed;
+int speed=0;
 
 
 
@@ -87,53 +89,55 @@ void USART1_IRQHandler(void)                	//??1??????
 	u8 Res;
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  
 		{
-		Res =USART_ReceiveData(USART1);	
-		#if ifacceptcapitalinstruction
-			  if ( ((Res<='c')&&(Res>='a'))|| ((Res<='Z')&&(Res>='A')))
-		#else
-		    if ( (Res<='c')&&(Res>='a') )
-		#endif
-		{
-			cnum=1;
-			dectr[0]=Res;
-		}
-		else if(cnum>0)
-		{
-			if ( ( (Res>='0')&& (Res<='9') )  )
-			{dectr[cnum]=Res;
-			cnum++;
-			}
-			else
-			cnum=0;
-		}
-		
-		if(cnum==5)
-		{
-			cnum=0;
-			if(dectr[0]=='c')
+			Res =USART_ReceiveData(USART1);	
+			#if ifacceptcapitalinstruction
+					if ( ((Res<='c')&&(Res>='a'))|| ((Res<='Z')&&(Res>='A')))
+			#else
+					if ( (Res<='c')&&(Res>='a') )
+			#endif
 			{
-				speed=(dectr[1]-'0')*1000+(dectr[2]-'0')*100+(dectr[3]-'0')*10+(dectr[4]-'0')-5000;
-				sprintf(tempstr2,"%s%d%s","Coverd: ",speed,"mm");
-			  writefeedback(tempstr2);}
-//			if(dectr[0]=='A')
-//			{
-//				if(dectr[1]=='0')
-//				{
-//				speed=(dectr[2]-'0')*10+(dectr[3]-'0');
-//				sprintf(tempstr2,"%s%d%s","UP_P:",speed,"%");
-//			  writefeedback(tempstr2);}
-//				else if(dectr[1]=='1')
-//				{
-//				speed=(dectr[2]-'0')*10+(dectr[3]-'0');
-//				sprintf(tempstr2,"%s%d%s","DOWN_P:",speed,"%");
-//			  writefeedback(tempstr2);
-//				}
-//			}
+				cnum=1;
+				dectr[0]=Res;
+			}
+			else if(cnum>0)
+			{
+				if ( ( (Res>='0')&& (Res<='9') )  )
+				{dectr[cnum]=Res;
+				cnum++;
+				}
+				else
+				cnum=0;
+			}
 			
-		}
+			if(cnum==5)
+			{
+				cnum=0;
+				if(dectr[0]=='c')
+				{
+					speed=(dectr[1]-'0')*1000+(dectr[2]-'0')*100+(dectr[3]-'0')*10+(dectr[4]-'0')-5000;
+					sprintf(tempstr2,"%d",speed);
+					writefeedback(tempstr2);}
+	//			if(dectr[0]=='A')
+	//			{
+	//				if(dectr[1]=='0')
+	//				{
+	//				speed=(dectr[2]-'0')*10+(dectr[3]-'0');
+	//				sprintf(tempstr2,"%s%d%s","UP_P:",speed,"%");
+	//			  writefeedback(tempstr2);}
+	//				else if(dectr[1]=='1')
+	//				{
+	//				speed=(dectr[2]-'0')*10+(dectr[3]-'0');
+	//				sprintf(tempstr2,"%s%d%s","DOWN_P:",speed,"%");
+	//			  writefeedback(tempstr2);
+	//				}
+	//			}
+				
+			}
 	}
 		
 } 
+		
+
 
 
 

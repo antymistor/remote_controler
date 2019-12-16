@@ -89,7 +89,41 @@ void LCD_DrawLine(u16 x1, u16 y1, u16 x2, u16 y2)
 		} 
 	}  
 } 
+void LCD_DrawLineC(u16 x1, u16 y1, u16 x2, u16 y2,u16 color)
+{
+	u16 t; 
+	int xerr=0,yerr=0,delta_x,delta_y,distance; 
+	int incx,incy,uRow,uCol; 
 
+	delta_x=x2-x1; //计算坐标增量 
+	delta_y=y2-y1; 
+	uRow=x1; 
+	uCol=y1; 
+	if(delta_x>0)incx=1; //设置单步方向 
+	else if(delta_x==0)incx=0;//垂直线 
+	else {incx=-1;delta_x=-delta_x;} 
+	if(delta_y>0)incy=1; 
+	else if(delta_y==0)incy=0;//水平线 
+	else{incy=-1;delta_y=-delta_y;} 
+	if( delta_x>delta_y)distance=delta_x; //选取基本增量坐标轴 
+	else distance=delta_y; 
+	for(t=0;t<=distance+1;t++ )//画线输出 
+	{  
+		GUI_DrawPoint(uRow,uCol,color);//画点 
+		xerr+=delta_x ; 
+		yerr+=delta_y ; 
+		if(xerr>distance) 
+		{ 
+			xerr-=distance; 
+			uRow+=incx; 
+		} 
+		if(yerr>distance) 
+		{ 
+			yerr-=distance; 
+			uCol+=incy; 
+		} 
+	}  
+} 
 //******************************************************************
 //函数名：  LCD_DrawRectangle
 //功能：    GUI画矩形(非填充)
@@ -163,7 +197,7 @@ void gui_circle(int xc, int yc,u16 c,int r, int fill)
 	d = 3 - 2 * r;
 
 
-	if (fill) 
+	if(fill) 
 	{
 		// 如果填充（画实心圆）
 		while (x <= y) {
@@ -336,44 +370,61 @@ void Show_Str(u16 x, u16 y, u16 fc, u16 bc, u8 *str,u8 size,u8 mode)
         
 }
 
-//******************************************************************
-//函数名：  Gui_StrCenter
-//功能：    居中显示一个字符串,包含中英文显示
-//输入参数：x,y :起点坐标
-// 			fc:前置画笔颜色
-//			bc:背景颜色
-//			str :字符串	 
-//			size:字体大小
-//			mode:模式	0,填充模式;1,叠加模式
-//返回值：  无
-//修改记录：无
-//******************************************************************   
-void Gui_StrCenter(u16 x, u16 y, u16 fc, u16 bc, u8 *str,u8 size,u8 mode)
-{
-	u16 len=strlen((const char *)str);
-	u16 x1=(lcddev.width-len*8)/2;
-	Show_Str(x+x1,y,fc,bc,str,size,mode);
-} 
- 
-//******************************************************************
-//函数名：  Gui_Drawbmp16
-//功能：    显示一副16位BMP图像
-//输入参数：x,y :起点坐标
-// 			*p :图像数组起始地址
-//返回值：  无
-//修改记录：无
-//******************************************************************  
-void Gui_Drawbmp16(u16 x,u16 y,const unsigned char *p) //显示40*40 QQ图片
-{
-  	int i; 
-	unsigned char picH,picL; 
-	LCD_SetWindows(x,y,x+40-1,y+40-1);//窗口设置
-    for(i=0;i<40*40;i++)
-	{	
-	 	picL=*(p+i*2);	//数据低位在前
-		picH=*(p+i*2+1);				
-		LCD_WR_DATA_16Bit(picH<<8|picL);  						
-	}	
-	LCD_SetWindows(0,0,lcddev.width-1,lcddev.height-1);//恢复显示窗口为全屏	
 
+u8 inorout(u16 x,u16 y,u16 *tri)
+{
+	int signtri=(tri[2]-tri[0])*(tri[5]-tri[1])-(tri[3]-tri[1])*(tri[4]-tri[0]);
+	int signab=(tri[2]-tri[0])*(y-tri[1])-(tri[3]-tri[1])*(x-tri[0]);
+	int signca=(tri[0]-tri[4])*(y-tri[5])-(tri[1]-tri[5])*(x-tri[4]);
+	int signbc=(tri[4]-tri[2])*(y-tri[5])-(tri[5]-tri[3])*(x-tri[4]);
+
+	if(signtri*signab>=0&&signtri*signca>=0&&signtri*signbc>=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+void Gui_DrawTri(u16 *tri)
+{
+	u16 Xmax,Ymax,Xmin,Ymin;
+	u16 tempx,tempy;
+	Xmax=tri[0];if(Xmax<tri[2]){Xmax=tri[2];}if(Xmax<tri[4]){Xmax=tri[4];}
+	Xmin=tri[0];if(Xmin>tri[2]){Xmin=tri[2];}if(Xmin>tri[4]){Xmin=tri[4];}
+	Ymax=tri[1];if(Ymax<tri[3]){Ymax=tri[3];}if(Ymax<tri[5]){Ymax=tri[5];}
+	Ymin=tri[1];if(Ymin>tri[3]){Ymin=tri[3];}if(Ymin>tri[5]){Ymin=tri[5];}
+	for(tempx=Xmin;tempx<=Xmax;tempx++)
+	{
+		for(tempy=Ymin;tempy<=Ymax;tempy++)
+		{
+       if(inorout(tempx,tempy,tri))
+			 {
+				 GUI_DrawPoint(tempx,tempy,tri[6]);
+			 }
+		}
+	}
+}
+
+void showhanzi(unsigned int x,unsigned int y,unsigned char index,u16 color)	
+{  
+	unsigned char i,j;
+	unsigned char *temp=Hzk[index];    
+    Address_set(x,y,x+15,y+15); //????      
+	for(j=0;j<32;j++)
+	{
+		for(i=0;i<8;i++)
+		{ 		     
+		 	if((*temp&(1<<i))!=0)
+			{
+				LCD_WR_DATA_16Bit(color);
+			} 
+			else
+			{
+				LCD_WR_DATA_16Bit(BACK_COLOR);
+			}   
+		}
+		temp++;
+	 }
 }

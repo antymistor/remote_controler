@@ -82,15 +82,15 @@ extern u16  BACK_COLOR; //背景颜色.默认为白色
 //画笔颜色
 #define WHITE       0xFFFF
 #define BLACK      	0x0000	  
-#define BLUE       	0x001F  
-#define BRED        0XF81F
-#define GRED 			 	0XFFE0
-#define GBLUE			 	0X07FF
-#define RED         0xF800
+#define BLUE       	0xF800  
+#define BRED        0XF18F
+#define GBLUE 			0XFFE0
+#define GRED			 	0X07FF
+#define RED         0x001F
 #define MAGENTA     0xF81F
 #define GREEN       0x07E0
-#define CYAN        0x7FFF
-#define YELLOW      0xFFE0
+#define CYAN        0xFFFE
+#define YELLOW      0x07FF
 #define BROWN 			0XBC40 //棕色
 #define BRRED 			0XFC07 //棕红色
 #define GRAY  			0X8430 //灰色

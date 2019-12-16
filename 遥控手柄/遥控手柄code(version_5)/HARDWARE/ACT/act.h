@@ -4,13 +4,14 @@
 
 
 void display_init(void);
-void refresh_mode(void);
-void trans_analog_value(u8 sw);
+
+void trans_analog_value(void);
 void refresh_analog_value(void);
 
 void writelastsent (u8 *str);
 void writefeedback (u8 *str);
 void work(void);
+void drawp(u8 sw);
 #endif
 
 //------------------End of File----------------------------

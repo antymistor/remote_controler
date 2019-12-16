@@ -4,23 +4,42 @@
 
 
 extern u16 key_value;
-extern u8 up;
-extern u8 down;
-extern u8 left;
-extern u8 right;
-extern u8 pup;
-extern u8 pdown;
-extern u8 pleft;
-extern u8 pright;
+//5-dir key used for windlass motor control 
+extern u8 up1;
+extern u8 down1;
+extern u8 left1;
+extern u8 right1;
+extern u8 center1;
+extern u8 pup1;
+extern u8 pdown1;
+extern u8 pleft1;
+extern u8 pright1;
+extern u8 pcenter1;
 
-extern u8 ka;
-extern u8 kb;
-extern u8 kc;
-extern u8 pa;
-extern u8 pb;
-extern u8 pc;
+//5-dir key used for main-working robot contorl
+extern u8 up2;
+extern u8 down2;
+extern u8 left2;
+extern u8 right2;
+extern u8 center2;
+extern u8 pup2;
+extern u8 pdown2;
+extern u8 pleft2;
+extern u8 pright2;
+extern u8 pcenter2;
+
+extern u8 nleft2;
+extern u8 nright2;
+//Valve1,Valve2,stopall key
+extern u8 v1;
+extern u8 v2;
+extern u8 s;
+extern u8 pv1;
+extern u8 pv2;
+extern u8 ps;
+
+
 void  Key_Init(void);
-
 void read_key(void);
 
 

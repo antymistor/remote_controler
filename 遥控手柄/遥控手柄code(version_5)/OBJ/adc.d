@@ -2,7 +2,7 @@
 ..\obj\adc.o: ..\HARDWARE\ADC\adc.h
 ..\obj\adc.o: ..\USER\stm32f10x.h
 ..\obj\adc.o: ..\CORE\core_cm3.h
-..\obj\adc.o: D:\MyApp\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\adc.o: D:\MYAPP\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\adc.o: ..\USER\system_stm32f10x.h
 ..\obj\adc.o: ..\USER\stm32f10x_conf.h
 ..\obj\adc.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h

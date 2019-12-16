@@ -2,11 +2,8 @@
 #define __adc_H
 #include "stm32f10x.h"
 
-extern u16 X_value;
-extern u16 Y_value;
-extern u16 A1_value;
-extern u16 A2_value;
-extern u16 AD_Value[4];
+
+extern u16 AD_Value[6];
 
 
 void Adc_Init(void);

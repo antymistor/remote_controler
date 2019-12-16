@@ -2,7 +2,7 @@
 ..\obj\act.o: ..\HARDWARE\ACT\act.h
 ..\obj\act.o: ..\USER\stm32f10x.h
 ..\obj\act.o: ..\CORE\core_cm3.h
-..\obj\act.o: D:\MYAPP\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\act.o: D:\MyApp\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\act.o: ..\USER\system_stm32f10x.h
 ..\obj\act.o: ..\USER\stm32f10x_conf.h
 ..\obj\act.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -32,10 +32,10 @@
 ..\obj\act.o: ..\SYSTEM\delay\delay.h
 ..\obj\act.o: ..\SYSTEM\sys\sys.h
 ..\obj\act.o: ..\HARDWARE\LCD\lcd.h
-..\obj\act.o: D:\MYAPP\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\act.o: D:\MyApp\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\act.o: ..\HARDWARE\GUI\gui.h
 ..\obj\act.o: ..\HARDWARE\ADC\adc.h
 ..\obj\act.o: ..\HARDWARE\KEY\key.h
 ..\obj\act.o: ..\SYSTEM\usart\usart.h
-..\obj\act.o: D:\MYAPP\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\act.o: D:\MYAPP\ARM\ARMCC\Bin\..\include\String.h
+..\obj\act.o: D:\MyApp\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\act.o: D:\MyApp\ARM\ARMCC\Bin\..\include\String.h
